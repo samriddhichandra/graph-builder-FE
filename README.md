@@ -1,134 +1,170 @@
-<<<<<<< HEAD
-# graph-builder-FE
-=======
 # App Graph Builder
 
-Responsive React take-home project for viewing and editing a small service graph. The app starts with a simple landing page and opens into the required builder layout with a top bar, left rail, React Flow canvas, app panel, and node inspector.
+A responsive React application for viewing and editing a small service dependency graph. Built with React Flow, TanStack Query, and Zustand.
 
-## Assignment Checklist
+---
 
-| Requirement | Status | Notes |
-| --- | --- | --- |
-| React + Vite | Done | Vite app with React entry in `src/main.tsx`. |
-| TypeScript strict mode | Done | `strict: true` is enabled in `tsconfig.app.json`. |
-| React Flow / xyflow | Done | Canvas uses `@xyflow/react`. |
-| TanStack Query | Done | Mock app and graph data load through `useQuery`. |
-| Zustand | Done | Stores selected app, selected node, active tab, mobile drawer, theme, and test error mode. |
-| Mock API calls | Done | Promise-based mock API with simulated latency. MSW handlers are also included for extension. |
-| Top bar | Done | Title, search, test error, theme, notifications, panel, and add service actions. |
-| Left rail | Done | Static icon-style navigation. |
-| Right app panel | Done | App selector/list plus node inspector. |
-| Dotted React Flow canvas | Done | Uses React Flow `Background` dots. |
-| Mobile drawer | Done | Right panel becomes a slide-over under 900px. |
-| 3 nodes and 2 edges | Done | Each mock app graph has at least 3 nodes and 2 edges. |
-| Drag nodes | Done | React Flow default node dragging. |
-| Select node | Done | Clicking a node opens/updates the inspector. |
-| Delete selected node | Done | Delete/Backspace removes nodes and clears selected node state. |
-| Zoom and pan | Done | React Flow defaults plus controls. |
-| Fit view | Done | Initial `fitView`; `F` shortcut also fits the view. |
-| Status pill | Done | Healthy, Degraded, and Down badges. |
-| Inspector tabs | Done | Config and Runtime tabs. |
-| Synced slider and number input | Done | CPU value syncs both ways and persists into node data. |
-| Editable node name | Done | Config tab input updates React Flow node data. |
-| Description textarea | Done | Optional field included. |
-| Loading state | Done | Loading panel appears while mock data resolves. |
-| Error state | Done | `Test error` simulates failures and shows retry. |
-| Query caching | Done | TanStack Query caches by app id and error mode. |
-| App change refetch | Done | Selecting an app changes the graph query key. |
-| Required scripts | Done | `dev`, `build`, `preview`, `lint`, and `typecheck`. |
-| ESLint React + TS | Done | Configured in `eslint.config.js`. |
+## Table of Contents
 
-## Left / Known Limitations
+- [Overview](#overview)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+- [Available Scripts](#available-scripts)
+- [Architecture Decisions](#architecture-decisions)
+- [Feature Checklist](#feature-checklist)
+- [Known Limitations](#known-limitations)
+- [Error Testing](#error-testing)
 
-- The project uses small shadcn-style local primitives for buttons and tabs, but it does not include a full shadcn component install for every input/badge/slider.
-- Most UI code still lives in `App.tsx`; for a larger project, `TopBar`, `GraphCanvas`, `AppPanel`, and `NodeInspector` should be split into separate files.
-- Mock data is in-memory and resets on refresh.
-- Added nodes are local only and are not persisted to a backend.
-- The left rail is static placeholder navigation.
-- MSW handlers exist, but the running app uses the simpler promise-based mock API path.
+---
 
-## Features
+## Overview
 
-- Loads mock apps: `supertokens-golang`, `supertokens-java`, and `supertokens-python`.
-- Fetches app graphs through typed mock API functions with simulated latency.
-- Renders draggable service nodes and edges with React Flow.
-- Supports node selection, Delete/Backspace removal, zoom, pan, and fit view.
-- Lets users edit node name, description, and CPU target from the inspector.
-- Keeps the CPU slider and numeric input in sync.
-- Includes search, status filtering, add node, and connect-node interactions.
-- Shows loading and error states through TanStack Query.
-- Shows a short buffer transition when opening the workspace from the landing page.
-- Turns the right panel into a slide-over drawer on smaller screens.
+App Graph Builder starts from a landing page and opens into a builder workspace with a top bar, left rail, React Flow canvas, app panel, and node inspector. It loads mock service graphs for three apps (`supertokens-golang`, `supertokens-java`, `supertokens-python`) and lets users explore, edit, and interact with service dependency graphs in real time.
+
+---
 
 ## Tech Stack
 
-- React + Vite
-- TypeScript with `strict: true`
-- React Flow / xyflow
-- TanStack Query
-- Zustand
-- Tailwind CSS with small shadcn-style UI primitives
-- ESLint
-- MSW handlers included alongside the local promise-based mock API
+| Layer | Technology |
+|---|---|
+| Framework | React 18 + Vite |
+| Language | TypeScript (`strict: true`) |
+| Graph Canvas | React Flow / xyflow |
+| Server State | TanStack Query |
+| Client State | Zustand |
+| Styling | Tailwind CSS + local shadcn-style primitives |
+| Mocking | Promise-based mock API + MSW handlers |
+| Linting | ESLint (React + TypeScript rules) |
+
+---
 
 ## Project Structure
 
-```text
-public/                  Static public assets
+```
+public/                  Static assets
 src/
-  assets/                Local assets
-  components/ui/         Reusable UI primitives
-  lib/                   Shared helpers
-  mocks/                 Mock API client, fixtures, and MSW handlers
-  App.css                Main app styles
-  App.tsx                Main graph builder implementation
-  index.css              Global styles and Tailwind import
+  assets/                Local assets (icons, images)
+  components/ui/         Reusable UI primitives (Button, Tabs, Badge, Slider)
+  lib/                   Shared utilities and helpers
+  mocks/
+    api.ts               Promise-based mock API client
+    fixtures.ts          Static mock data (apps and graphs)
+    handlers.ts          MSW request handlers (for extension)
+  App.css                Component-scoped styles
+  App.tsx                Main builder implementation
+  index.css              Global styles and Tailwind entry
   main.tsx               React entry point
-index.html               Vite HTML entry
-package.json             Scripts and dependencies
-tsconfig*.json           TypeScript configuration
+index.html               Vite HTML shell
+package.json             Dependencies and scripts
+tsconfig.app.json        TypeScript config (strict mode enabled)
+tsconfig.json            Root TypeScript config
 vite.config.ts           Vite configuration
+eslint.config.js         ESLint configuration
 ```
 
-## Setup
+---
 
-Install dependencies:
+## Getting Started
+
+**Prerequisites:** Node.js 18+ and npm.
 
 ```bash
+# Install dependencies
 npm install
-```
 
-Start the dev server:
-
-```bash
+# Start the development server
 npm run dev
 ```
 
-Open the Vite URL, usually:
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-```text
-http://localhost:5173
-```
+---
 
-## Scripts
+## Available Scripts
 
-```bash
-npm run dev
-npm run typecheck
-npm run lint
-npm run build
-npm run preview
-```
+| Script | Description |
+|---|---|
+| `npm run dev` | Start the Vite development server |
+| `npm run build` | Type-check and build for production |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint across the project |
+| `npm run typecheck` | Run `tsc --noEmit` without building |
 
-## Key Decisions
+---
 
-- TanStack Query owns mock server data for `GET /apps` and `GET /apps/:appId/graph`.
-- Zustand owns local UI state only: selected app, selected node, active inspector tab, mobile drawer, theme, and test error mode.
-- React Flow state is kept predictable with `useNodesState` and `useEdgesState`.
-- A landing page is included because it was requested; opening it shows a short buffer transition before mounting the builder.
-- The dark theme uses a graphite, teal, and amber palette to avoid the default blue-black dashboard look.
+## Architecture Decisions
+
+### State ownership
+
+The project draws a clear boundary between server state and UI state:
+
+- **TanStack Query** owns all mock server data — the `GET /apps` and `GET /apps/:appId/graph` queries. Selecting a different app changes the query key and triggers a fresh fetch. Query results are cached by `[appId, errorMode]`.
+- **Zustand** owns local UI state only: selected app, selected node, active inspector tab, mobile drawer open/close, theme, and test error mode. It does not cache or replicate server data.
+- **React Flow** state (`useNodesState`, `useEdgesState`) is kept local to the canvas component to preserve predictable node and edge mutations.
+
+### Mock API
+
+The running app uses a promise-based mock API (`src/mocks/api.ts`) with simulated network latency. MSW handlers are included in `src/mocks/handlers.ts` for teams that prefer intercepting real `fetch` calls during development or testing.
+
+### Routing and layout
+
+A landing page is included before the builder workspace. Opening the workspace plays a short buffer transition to avoid a jarring layout flash when React Flow initialises.
+
+### Theming
+
+The dark theme uses a graphite, teal, and amber palette — deliberately avoiding the default blue-black dashboard aesthetic common in off-the-shelf component libraries.
+
+### Responsive layout
+
+The right panel becomes a slide-over drawer on viewports narrower than 900 px, managed via the Zustand drawer state.
+
+---
+
+## Feature Checklist
+
+| Feature | Status | Notes |
+|---|---|---|
+| React + Vite | ✅ | Vite app with React entry in `src/main.tsx` |
+| TypeScript strict mode | ✅ | `strict: true` in `tsconfig.app.json` |
+| React Flow canvas | ✅ | `@xyflow/react` with dotted background grid |
+| TanStack Query | ✅ | Mock app and graph data via `useQuery` |
+| Zustand store | ✅ | Selected app, node, tab, drawer, theme, error mode |
+| Mock API | ✅ | Promise-based client; MSW handlers also included |
+| Top bar | ✅ | Title, search, test error, theme, notifications, panel toggle, add service |
+| Left rail | ✅ | Icon-style navigation (static placeholder) |
+| Right app panel | ✅ | App selector/list and node inspector |
+| 3+ nodes, 2+ edges per graph | ✅ | All mock graphs satisfy the minimum |
+| Drag nodes | ✅ | React Flow default drag behaviour |
+| Select node | ✅ | Click opens or updates the inspector |
+| Delete selected node | ✅ | Delete / Backspace removes node and clears selection |
+| Zoom and pan | ✅ | React Flow defaults + controls widget |
+| Fit view | ✅ | Initial `fitView` on load; `F` shortcut re-fits |
+| Status pill | ✅ | Healthy, Degraded, and Down badges |
+| Inspector tabs | ✅ | Config and Runtime tabs |
+| Synced slider + number input | ✅ | CPU value stays in sync; persists into node data |
+| Editable node name | ✅ | Config tab input updates React Flow node data |
+| Description textarea | ✅ | Optional field on the Config tab |
+| Loading state | ✅ | Panel shown while mock data resolves |
+| Error state | ✅ | Test error button simulates failure; retry resets |
+| Query caching | ✅ | Keyed by `[appId, errorMode]` |
+| App-change refetch | ✅ | Changing the selected app updates the query key |
+| Mobile drawer | ✅ | Right panel becomes a slide-over below 900 px |
+| Required scripts | ✅ | `dev`, `build`, `preview`, `lint`, `typecheck` |
+| ESLint (React + TS) | ✅ | Configured in `eslint.config.js` |
+
+---
+
+## Known Limitations
+
+- Most UI code lives in `App.tsx`. For a larger codebase, `TopBar`, `GraphCanvas`, `AppPanel`, and `NodeInspector` should be extracted into separate files.
+- Mock data is in-memory and resets on page refresh — added nodes are not persisted.
+- The left rail is a static navigation placeholder with no routing.
+- MSW handlers exist but the app defaults to the simpler promise-based mock path. To switch to MSW, initialise the service worker in `main.tsx` and remove the direct mock API calls.
+- UI primitives are small local components modelled after shadcn; this is not a full shadcn install.
+
+---
 
 ## Error Testing
 
-The `Test error` button makes mock API requests fail. Use it to check the loading, error, and retry flow. The retry button clears test error mode and refetches the mock data.
->>>>>>> 107176a (feat: integrate MSW mocks, dark theme, canvas grid, node styling, shortcuts)
+Click **Test error** in the top bar to force mock API requests to fail. The app will show the error state with a retry option. Clicking **Retry** clears the error mode flag in Zustand and triggers a fresh TanStack Query refetch.
