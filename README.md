@@ -27,8 +27,6 @@ App Graph Builder starts from a landing page and opens into a builder workspace 
 
 ## Demo Images
 
-## Demo Images
-
 ![App Graph Builder Screenshot 1](./public/Screenshot%202026-06-14%20160417.png)
 ![App Graph Builder Screenshot 2](./public/Screenshot%202026-06-14%20160438.png)
 ![App Graph Builder Screenshot 3](./public/Screenshot%202026-06-14%20160444.png)
