@@ -27,14 +27,14 @@ App Graph Builder starts from a landing page and opens into a builder workspace 
 
 ## Demo Images
 
-![App Graph Builder Screenshot 1](./Screenshot%202026-06-14%20160417.png)
-![App Graph Builder Screenshot 2](./Screenshot%202026-06-14%20160438.png)
-![App Graph Builder Screenshot 3](./Screenshot%202026-06-14%20160444.png)
-![App Graph Builder Screenshot 4](./Screenshot%202026-06-14%20160610.png)
-![App Graph Builder Screenshot 5](./Screenshot%202026-06-14%20160628.png)
-![App Graph Builder Architecture](./app_graph_builder_architecture.png)
+## Demo Images
 
----
+![App Graph Builder Screenshot 1](./public/Screenshot%202026-06-14%20160417.png)
+![App Graph Builder Screenshot 2](./public/Screenshot%202026-06-14%20160438.png)
+![App Graph Builder Screenshot 3](./public/Screenshot%202026-06-14%20160444.png)
+![App Graph Builder Screenshot 4](./public/Screenshot%202026-06-14%20160610.png)
+![App Graph Builder Screenshot 5](./public/Screenshot%202026-06-14%20160628.png)
+![App Graph Builder Architecture](./public/app_graph_builder_architecture.png)
 
 ## Tech Stack
 
