@@ -7,6 +7,7 @@ A responsive React application for viewing and editing a small service dependenc
 ## Table of Contents
 
 - [Overview](#overview)
+- [Demo Images](#demo-images)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Getting Started](#getting-started)
@@ -22,18 +23,15 @@ A responsive React application for viewing and editing a small service dependenc
 
 App Graph Builder starts from a landing page and opens into a builder workspace with a top bar, left rail, React Flow canvas, app panel, and node inspector. It loads mock service graphs for three apps (`supertokens-golang`, `supertokens-java`, `supertokens-python`) and lets users explore, edit, and interact with service dependency graphs in real time.
 
+---
+
 ## Demo Images
 
-![App Graph Builder Screenshot 1](./Screenshot 2026-06-14 160417.png)
-
-![App Graph Builder Screenshot 2](./Screenshot 2026-06-14 160438.png)
-
-![App Graph Builder Screenshot 3](./Screenshot 2026-06-14 160444.png)
-
-![App Graph Builder Screenshot 4](./Screenshot 2026-06-14 160610.png)
-
-![App Graph Builder Screenshot 5](./Screenshot 2026-06-14 160628.png)
-
+![App Graph Builder Screenshot 1](./Screenshot%202026-06-14%20160417.png)
+![App Graph Builder Screenshot 2](./Screenshot%202026-06-14%20160438.png)
+![App Graph Builder Screenshot 3](./Screenshot%202026-06-14%20160444.png)
+![App Graph Builder Screenshot 4](./Screenshot%202026-06-14%20160610.png)
+![App Graph Builder Screenshot 5](./Screenshot%202026-06-14%20160628.png)
 ![App Graph Builder Architecture](./app_graph_builder_architecture.png)
 
 ---
@@ -139,33 +137,33 @@ The right panel becomes a slide-over drawer on viewports narrower than 900 px, m
 
 | Feature | Status | Notes |
 |---|---|---|
-| React + Vite | ✅ | Vite app with React entry in `src/main.tsx` |
-| TypeScript strict mode | ✅ | `strict: true` in `tsconfig.app.json` |
-| React Flow canvas | ✅ | `@xyflow/react` with dotted background grid |
-| TanStack Query | ✅ | Mock app and graph data via `useQuery` |
-| Zustand store | ✅ | Selected app, node, tab, drawer, theme, error mode |
-| Mock API | ✅ | Promise-based client; MSW handlers also included |
-| Top bar | ✅ | Title, search, test error, theme, notifications, panel toggle, add service |
-| Left rail | ✅ | Icon-style navigation (static placeholder) |
-| Right app panel | ✅ | App selector/list and node inspector |
-| 3+ nodes, 2+ edges per graph | ✅ | All mock graphs satisfy the minimum |
-| Drag nodes | ✅ | React Flow default drag behaviour |
-| Select node | ✅ | Click opens or updates the inspector |
-| Delete selected node | ✅ | Delete / Backspace removes node and clears selection |
-| Zoom and pan | ✅ | React Flow defaults + controls widget |
-| Fit view | ✅ | Initial `fitView` on load; `F` shortcut re-fits |
-| Status pill | ✅ | Healthy, Degraded, and Down badges |
-| Inspector tabs | ✅ | Config and Runtime tabs |
-| Synced slider + number input | ✅ | CPU value stays in sync; persists into node data |
-| Editable node name | ✅ | Config tab input updates React Flow node data |
-| Description textarea | ✅ | Optional field on the Config tab |
-| Loading state | ✅ | Panel shown while mock data resolves |
-| Error state | ✅ | Test error button simulates failure; retry resets |
-| Query caching | ✅ | Keyed by `[appId, errorMode]` |
-| App-change refetch | ✅ | Changing the selected app updates the query key |
-| Mobile drawer | ✅ | Right panel becomes a slide-over below 900 px |
-| Required scripts | ✅ | `dev`, `build`, `preview`, `lint`, `typecheck` |
-| ESLint (React + TS) | ✅ | Configured in `eslint.config.js` |
+| React + Vite | Done | Vite app with React entry in `src/main.tsx` |
+| TypeScript strict mode | Done | `strict: true` in `tsconfig.app.json` |
+| React Flow canvas | Done | `@xyflow/react` with dotted background grid |
+| TanStack Query | Done | Mock app and graph data via `useQuery` |
+| Zustand store | Done | Selected app, node, tab, drawer, theme, error mode |
+| Mock API | Done | Promise-based client; MSW handlers also included |
+| Top bar | Done | Title, search, test error, theme, notifications, panel toggle, add service |
+| Left rail | Done | Icon-style navigation (static placeholder) |
+| Right app panel | Done | App selector/list and node inspector |
+| 3+ nodes, 2+ edges per graph | Done | All mock graphs satisfy the minimum |
+| Drag nodes | Done | React Flow default drag behaviour |
+| Select node | Done | Click opens or updates the inspector |
+| Delete selected node | Done | Delete / Backspace removes node and clears selection |
+| Zoom and pan | Done | React Flow defaults + controls widget |
+| Fit view | Done | Initial `fitView` on load; `F` shortcut re-fits |
+| Status pill | Done | Healthy, Degraded, and Down badges |
+| Inspector tabs | Done | Config and Runtime tabs |
+| Synced slider + number input | Done | CPU value stays in sync; persists into node data |
+| Editable node name | Done | Config tab input updates React Flow node data |
+| Description textarea | Done | Optional field on the Config tab |
+| Loading state | Done | Panel shown while mock data resolves |
+| Error state | Done | Test error button simulates failure; retry resets |
+| Query caching | Done | Keyed by `[appId, errorMode]` |
+| App-change refetch | Done | Changing the selected app updates the query key |
+| Mobile drawer | Done | Right panel becomes a slide-over below 900 px |
+| Required scripts | Done | `dev`, `build`, `preview`, `lint`, `typecheck` |
+| ESLint (React + TS) | Done | Configured in `eslint.config.js` |
 
 ---
 
