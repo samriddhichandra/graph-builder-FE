@@ -22,6 +22,20 @@ A responsive React application for viewing and editing a small service dependenc
 
 App Graph Builder starts from a landing page and opens into a builder workspace with a top bar, left rail, React Flow canvas, app panel, and node inspector. It loads mock service graphs for three apps (`supertokens-golang`, `supertokens-java`, `supertokens-python`) and lets users explore, edit, and interact with service dependency graphs in real time.
 
+## Demo Images
+
+![App Graph Builder Screenshot 1](./Screenshot 2026-06-14 160417.png)
+
+![App Graph Builder Screenshot 2](./Screenshot 2026-06-14 160438.png)
+
+![App Graph Builder Screenshot 3](./Screenshot 2026-06-14 160444.png)
+
+![App Graph Builder Screenshot 4](./Screenshot 2026-06-14 160610.png)
+
+![App Graph Builder Screenshot 5](./Screenshot 2026-06-14 160628.png)
+
+![App Graph Builder Architecture](./app_graph_builder_architecture.png)
+
 ---
 
 ## Tech Stack
