@@ -481,7 +481,7 @@ function LandingPage({ onOpenBuilder, theme, toggleTheme }: { onOpenBuilder: () 
           <button className="landing-icon-button" type="button" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`} onClick={toggleTheme}>
             {theme === 'dark' ? <Sun size={17} /> : <Moon size={17} />}
           </button>
-          <button className="landing-secondary-button" type="button" onClick={onOpenBuilder}>Open builder</button>
+          
         </div>
       </header>
 
